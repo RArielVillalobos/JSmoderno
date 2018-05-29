@@ -9,6 +9,11 @@ eventListeners();
 
 function eventListeners(){
       document.getElementById('formulario').addEventListener('submit',agregarTweet);
+
+      //borrar tweets
+      listaTweets.addEventListener('click',borrarTweet);
+
+
 }
 
 //funciones
@@ -30,6 +35,17 @@ function agregarTweet(e){
     //añade el boton de borrar al tweet
     li.appendChild(botonBorrar);
     //añade el tweet a la lista
-    listaTweets.appendChild(li);  
+    listaTweets.appendChild(li);
 }
+function borrarTweet(e){
+    e.preventDefault();
+    //si usamos className seria asi e.target.className('borrar-tweet')
+    if(e.target.classList.contains('borrar-tweet')){
+        //recordemos que para borrar el elemento debemos ir al padre, en este caso con ir al li es suficiente
+        e.target.parentElement.remove();
+        alert('tweet eliminado');
+    }
+    
+}
+
 
